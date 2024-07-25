@@ -2,41 +2,79 @@
 {% load static %}
 {% block head %}
 <link rel="stylesheet" href="{% static 'css/posts/post-detail.css' %}" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.like-button').click(function () {
+            var post_id = $(this).data('id');
+            $.ajax({
+                url: '/post/' + post_id + '/like/',
+                method: 'POST',
+                data: {
+                    'csrfmiddlewaretoken': '{{ csrf_token }}'
+                },
+                success: function (response) {
+                    $('#like-count-' + post_id).text(response.likes);
+                    if (response.liked) {
+                        $('.like-button').addClass('liked');
+                    } else {
+                        $('.like-button').removeClass('liked');
+                    }
+                }
+            });
+        });
+    });
+</script>
 {% endblock %}
 {% block content %}
-<section class="post-container">
-    <div class="post-details">
-        <div class="card-img-container">
-            <img src="{% static 'images/sk8r-boi-cat.svg' %}" alt="A skater boy cat" />
-        </div>
+<article class="post-container">
+    <header class="post-header">
         <h1 class="post-title">{{ post.title }}</h1>
-        <p>Written by {{ post.author }}</p>
-        <p>On {{ post.date }}</p>
+        <p class="post-meta">
+            Written by <span class="post-author">{{ post.author }}</span> on <time
+                datetime="{{ post.created_at|date:'Y-m-d' }}">{{ post.created_at|date:"F j, Y, g:i a" }}</time>
+        </p>
+    </header>
+
+    <section class="post-content">
         <p>{{ post.description }}</p>
+    </section>
 
-        <div class="post-actions">
-            <a href="{% url 'post-update' post.id %}" class="btn warn">Edit</a>
-            <a href="{% url 'post-delete' post.id %}" class="btn danger">Delete</a>
+    <div class="like-section">
+        <button class="like-button" data-id="{{ post.id }}">
+            <i class="fa{% if user in post.likes.all %}s{% else %}r{% endif %} fa-heart"></i>
+        </button>
+        <span id="like-count-{{ post.id }}" class="like-count">{{ post.total_likes }}</span>
+    </div>
+
+    {% if user.username == post.author %}
+    <div class="post-actions">
+        <a href="{% url 'post-update' post.id %}" class="btn warn">Edit</a>
+        <form action="{% url 'post-delete' post.id %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn danger">Delete</button>
+        </form>
+    </div>
+    {% endif %}
+
+    <section class="comments">
+        <h2>Comments</h2>
+        {% for comment in comments %}
+        <div class="comment">
+            <p class="comment-meta"><strong>{{ comment.author }}</strong> on <time datetime="{{ comment.created_at|date:'Y-m-d' }}">{{ comment.created_at|date:"F j, Y, g:i a" }}</time></p>
+            <p class="comment-text">{{ comment.text }}</p>
         </div>
-    </div>
-</section>
+        {% endfor %}
+    </section>
 
-<section class="comments">
-    <h2>Comments</h2>
-    {% for comment in comments %}
-    <div class="comment">
-        <p><strong>{{ comment.author }}</strong> on {{ comment.created_at }}</p>
-        <p>{{ comment.text }}</p>
-    </div>
-    {% endfor %}
-</section>
-
-<section class="comment-form">
-    <h2>Leave a comment</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Submit</button>
-    </form>
-</section>
+    <section class="comment-form">
+        <h2>Leave a comment</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn submit">Submit</button>
+        </form>
+    </section>
+</article>
 {% endblock %}

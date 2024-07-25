@@ -1,9 +1,12 @@
 main {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    /* Changed from center to flex-start */
     justify-content: center;
     flex-wrap: wrap;
     height: 100%;
+    padding-top: 50px;
+    /* Added padding to bring the content up */
 }
 
 main>section {
@@ -21,10 +24,6 @@ main>section {
 
 .logo-container {
     max-width: 375px;
-}
-
-.cat-container {
-    width: 80%;
 }
 
 .login {
@@ -66,6 +65,8 @@ main>section {
 @media only screen and (min-width: 768px) {
     main {
         justify-content: space-around;
+        padding-top: 50px;
+        /* Added padding to bring the content up */
     }
 
     main>section {
@@ -75,8 +76,9 @@ main>section {
     .login {
         border: var(--borders);
         padding: 20px;
-        border-radius: var(--card-border-radius);
-        box-shadow: var(--card-box-shadow);
+        border-radius: 0;
+        /* Remove rounded corners */
+        box-shadow: 5px 5px 6px -1px #aaa;
         width: 100%;
     }
 

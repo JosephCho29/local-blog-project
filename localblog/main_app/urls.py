@@ -11,5 +11,6 @@ urlpatterns = [
     path('posts/<int:pk>/update/', views.PostUpdate.as_view(), name='post-update'),
     path('posts/<int:pk>/delete/', views.PostDelete.as_view(), name='post-delete'),
     path('signup/', views.signup, name='signup'),
-    path('accounts/', include('django.contrib.auth.urls')),  # Include built-in auth URLs
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('post/<int:post_id>/like/', views.like_post, name='like-post'),
 ]

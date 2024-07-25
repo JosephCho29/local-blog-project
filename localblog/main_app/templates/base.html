@@ -8,20 +8,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" type="image/png" href="" />
-    <title>Local Blog</title>
+    <title>Shared Plates</title>
     <link rel="stylesheet" href="{% static 'css/base.css' %}" />
-    <link rel="shortcut icon" type="image/png" href="{% static 'images/splash.svg' %}" />
     {% block head %}
     {% endblock %}
 </head>
 
 <body>
     <header>
-        <div class="header-logo-container">
-            <a href="/">
-                <img src="{% static 'images/header-logo.svg' %}" alt="The Cat Collector Logo" />
-            </a>
-        </div>
         <nav>
             <ul>
                 {% if user.is_authenticated %}
@@ -41,6 +35,9 @@
                 {% endif %}
             </ul>
         </nav>
+        <div>
+            <a href="/"><img src="{% static 'images/logo.png' %}" alt="shared plates logo" /></a>
+        </div>
     </header>
     <main>
         {% block content %}

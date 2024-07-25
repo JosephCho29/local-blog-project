@@ -2,22 +2,39 @@ html {
     box-sizing: border-box;
 }
 
-/* The Universal Selector */
 *,
-/* All elements*/
 *::before,
-/* All ::before pseudo-elements */
 *::after {
-    /* All ::after pseudo-elements */
-    /* height & width will now include border & padding by default
-     but can be over-ridden as needed */
     box-sizing: inherit;
 }
 
-/* resets font size to be 62.5% of the user preference - 
-     in most browser configurations this will be 10px */
 :root {
     font-size: 62.5%;
+    --nav-bg: rgba(240, 128, 128, 0.7);
+    /* Light Coral background */
+    --nav-bg-ff: rgba(240, 128, 128, 0.9);
+    /* Light Coral background, more opaque */
+    --borders: rgb(220, 20, 60) solid 2px;
+    /* Crimson */
+    --text-color: rgb(33, 37, 41);
+    /* Darker text */
+    --link-hover-color: rgb(165, 42, 42);
+    /* Brown */
+    --button-bg: rgb(255, 245, 238);
+    /* Seashell */
+    --button-bg-hover: rgb(255, 228, 196);
+    /* Bisque */
+    --submit: rgb(0, 128, 128);
+    /* Teal */
+    --warn: rgb(255, 140, 0);
+    /* Dark Orange */
+    --danger: rgb(178, 34, 34);
+    /* Firebrick */
+    --secondary: rgb(169, 169, 169);
+    /* Dark Gray */
+    --font-xl: 2.4rem;
+    --font-l: 1.8rem;
+    --font-reg: 1.6rem;
 }
 
 body {
@@ -25,54 +42,50 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
-        'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-        'Helvetica Neue', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     min-height: 100vh;
-    --nav-bg: rgba(104, 197, 248, 0.7);
-    --nav-bg-ff: rgba(104, 197, 248, 0.9);
-    --borders: rgb(36, 116, 248) solid 2px;
-    --text-color: rgb(17, 20, 17);
-    --link-hover-color: rgb(16, 56, 158);
-    --button-bg: rgb(245, 245, 245);
-    --button-bg-hover: rgb(226, 226, 226);
-    --submit: rgb(26, 128, 0);
-    --warn: rgb(255, 102, 0);
-    --danger: rgb(220, 20, 30);
-    --secondary: rgb(57, 57, 57);
-    --card-box-shadow: 5px 5px 6px -1px #aaa;
-    --font-xtreme: 4.2rem;
-    --font-xxl: 3.6rem;
-    --font-xl: 2.4rem;
-    --font-l: 1.8rem;
-    --font-reg: 1.6rem;
-    --card-border-radius: 6px;
+    background-color: rgb(255, 250, 240);
+    /* Floral White */
+    color: var(--text-color);
 }
 
 header {
     width: 100%;
     background: var(--nav-bg-ff);
-    /* rgba(104, 197, 248, .9) */
     border-bottom: var(--borders);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    /* Remove padding */
+    border-radius: 0;
+    /* Remove border radius */
 }
 
 nav {
-    margin: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background: var(--nav-bg-ff);
+    margin: 0;
+    border: none;
+    /* Remove borders */
+    border-radius: 0;
+    /* Remove border radius */
 }
 
-ul {
-    margin: 0;
+nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
     list-style: none;
+    margin: 0;
     padding: 0;
 }
 
-main {
-    width: 100%;
-    padding: 0 10px;
-}
-
-h2 {
-    font-size: var(--font-xl);
+nav li {
+    padding: 5px 8px;
 }
 
 nav a {
@@ -86,27 +99,25 @@ nav a:hover {
     color: var(--link-hover-color);
 }
 
-nav ul {
+header div {
+    width: 100%;
     display: flex;
-    align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
+    margin: 0;
 }
 
-nav li {
-    padding: 5px 8px;
+header img {
+    width: 100%;
+    /* Ensure the image spans the entire width */
+    height: auto;
+    object-fit: cover;
+    max-height: 200px;
+    /* Adjust this value to control the banner height */
 }
 
-.header-logo-container {
-    margin: auto;
-    padding: 10px 20px 0;
-    max-width: 500px;
-}
-
-.page-header {
-    display: flex;
-    align-items: center;
-    margin: 20px;
+main {
+    width: 100%;
+    padding: 0 10px;
 }
 
 .btn {
@@ -147,31 +158,9 @@ nav li {
     border-color: var(--danger);
 }
 
-.page-header h1 {
-    font-size: var(--font-xxl);
-    margin: 0;
-}
-
-.page-header img {
-    height: 40px;
-    margin-left: 15px;
-}
-
-.page-header img:first-of-type {
-    margin-left: 20px;
-}
-
-.page-content {
-    font-size: var(--font-reg);
-}
-
 @media only screen and (min-width: 768px) {
     header {
-        position: sticky;
-        display: flex;
-        flex-direction: row;
         top: 0;
-        align-items: center;
     }
 
     main {
@@ -179,50 +168,8 @@ nav li {
         min-height: calc(100vh - 53px);
     }
 
-    nav,
-    .header-logo-container {
-        margin: 10px 0;
-        padding: 0 15px;
-    }
-
-    /* visual fix to help align logo */
-    .header-logo-container {
-        padding-top: 3px;
-    }
-
-    nav {
-        margin-left: auto;
-        display: flex;
-        justify-content: center;
-    }
-
     nav ul {
         flex-wrap: nowrap;
-    }
-
-    .header-logo-container {
-        width: 213px;
-    }
-
-    .page-header h1 {
-        font-size: var(--font-xtreme);
-    }
-
-    .page-header img {
-        height: 50px;
-        margin-left: 20px;
-    }
-
-    .page-header img:first-of-type {
-        margin-left: 25px;
-    }
-
-    @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-        header {
-            background: var(--nav-bg);
-            -webkit-backdrop-filter: blur(3px);
-            backdrop-filter: blur(3px);
-        }
     }
 }
 
@@ -232,42 +179,34 @@ nav li {
     }
 
     header {
-        margin: 20px 20px 0 20px;
-        width: calc(100vw - 40px);
-        max-width: 1920px;
-        top: 20px;
+        margin: 0;
+        width: 100vw;
+        max-width: 100vw;
+        top: 0;
         background-color: transparent;
         border-bottom: none;
     }
 
     nav,
-    .header-logo-container {
+    header div {
         margin: 0;
         background: var(--nav-bg-ff);
-        border: var(--borders);
-        border-radius: 18px;
-    }
-
-    nav {
-        margin-left: auto;
-    }
-
-    .header-logo-container {
-        /* visual fix to help align logo */
-        padding-top: 6px;
-        width: 256px;
-        height: 35px;
+        border: none;
+        /* Remove borders */
+        border-radius: 0;
+        /* Remove border radius */
     }
 
     @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
         header {
-            -webkit-backdrop-filter: none;
-            backdrop-filter: none;
+            background: var(--nav-bg);
+            -webkit-backdrop-filter: blur(3px);
+            backdrop-filter: blur(3px);
         }
 
         nav,
-        .header-logo-container {
-            background: rgba(104, 197, 248, 0.6);
+        header div {
+            background: rgba(240, 128, 128, 0.6);
             -webkit-backdrop-filter: blur(3px);
             backdrop-filter: blur(3px);
         }

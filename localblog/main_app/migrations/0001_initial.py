@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
             name='Cat',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('date', models.CharField(max_length=100)),
+                ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('description', models.TextField(max_length=800)),
                 ('title', models.CharField(max_length=100)),
             ],
