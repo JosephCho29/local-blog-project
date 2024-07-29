@@ -11,27 +11,16 @@ html {
 :root {
     font-size: 62.5%;
     --nav-bg: rgba(240, 128, 128, 0.7);
-    /* Light Coral background */
     --nav-bg-ff: rgba(240, 128, 128, 0.9);
-    /* Light Coral background, more opaque */
     --borders: rgb(220, 20, 60) solid 2px;
-    /* Crimson */
     --text-color: rgb(33, 37, 41);
-    /* Darker text */
     --link-hover-color: rgb(165, 42, 42);
-    /* Brown */
     --button-bg: rgb(255, 245, 238);
-    /* Seashell */
     --button-bg-hover: rgb(255, 228, 196);
-    /* Bisque */
     --submit: rgb(0, 128, 128);
-    /* Teal */
     --warn: rgb(255, 140, 0);
-    /* Dark Orange */
     --danger: rgb(178, 34, 34);
-    /* Firebrick */
     --secondary: rgb(169, 169, 169);
-    /* Dark Gray */
     --font-xl: 2.4rem;
     --font-l: 1.8rem;
     --font-reg: 1.6rem;
@@ -45,7 +34,6 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     min-height: 100vh;
     background-color: rgb(255, 250, 240);
-    /* Floral White */
     color: var(--text-color);
 }
 
@@ -57,9 +45,7 @@ header {
     flex-direction: column;
     align-items: center;
     padding: 0;
-    /* Remove padding */
     border-radius: 0;
-    /* Remove border radius */
 }
 
 nav {
@@ -69,9 +55,7 @@ nav {
     background: var(--nav-bg-ff);
     margin: 0;
     border: none;
-    /* Remove borders */
     border-radius: 0;
-    /* Remove border radius */
 }
 
 nav ul {
@@ -108,11 +92,9 @@ header div {
 
 header img {
     width: 100%;
-    /* Ensure the image spans the entire width */
     height: auto;
     object-fit: cover;
     max-height: 200px;
-    /* Adjust this value to control the banner height */
 }
 
 main {
@@ -192,9 +174,7 @@ main {
         margin: 0;
         background: var(--nav-bg-ff);
         border: none;
-        /* Remove borders */
         border-radius: 0;
-        /* Remove border radius */
     }
 
     @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {

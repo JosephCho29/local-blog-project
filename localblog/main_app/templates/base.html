@@ -20,7 +20,8 @@
             <ul>
                 {% if user.is_authenticated %}
                 <li><a href="{% url 'post-index' %}">All Posts</a></li>
-                <li><a href="{% url 'post-create' %}">Add a Post</a></li>
+                <li><a href="{% url 'post-create' %}">Create a New Post</a></li>
+                <li><a href="{% url 'our-archive' %}">Your Archive</a></li>
                 <li><a href="{% url 'about' %}">About</a></li>
                 <li>
                     <form id="logout-form" method="post" action="{% url 'logout' %}">
@@ -36,7 +37,7 @@
             </ul>
         </nav>
         <div>
-            <a href="/"><img src="{% static 'images/logo.png' %}" alt="shared plates logo" /></a>
+            <a href="/posts"><img src="{% static 'images/logo.png' %}" alt="shared plates logo" /></a>
         </div>
     </header>
     <main>

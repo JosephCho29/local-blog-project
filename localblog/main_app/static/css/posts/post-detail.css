@@ -115,10 +115,6 @@
     background-color: #0056b3;
 }
 
-.comment-form label {
-    display: none;
-}
-
 .like-section {
     margin-top: 20px;
     display: flex;
@@ -148,4 +144,27 @@
     margin-left: 10px;
     font-size: 1.6rem;
     color: #333;
+}
+
+@media only screen and (max-width: 600px) {
+    .post-container {
+        padding: 10px 20px;
+        width: 100%;
+        /* Ensure full width */
+        max-width: none;
+        /* Remove max-width */
+        margin: 0;
+        /* Remove auto margin */
+        border-radius: 0;
+        /* Remove border radius */
+    }
+
+    .post-header,
+    .post-content,
+    .post-actions,
+    .comments,
+    .comment-form {
+        padding: 0 10px;
+        /* Adjust padding for mobile view */
+    }
 }

@@ -1,11 +1,12 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
+from ckeditor.fields import RichTextField
 
 class Post(models.Model):
     title = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
-    description = models.TextField(max_length=800)
+    description = RichTextField()
     author = models.CharField(max_length=100)
     likes = models.ManyToManyField(User, related_name='liked_posts', through='Like')
 

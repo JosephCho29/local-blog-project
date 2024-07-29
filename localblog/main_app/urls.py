@@ -13,4 +13,5 @@ urlpatterns = [
     path('signup/', views.signup, name='signup'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('post/<int:post_id>/like/', views.like_post, name='like-post'),
+    path('our-archive/', views.our_archive, name='our-archive'),
 ]
